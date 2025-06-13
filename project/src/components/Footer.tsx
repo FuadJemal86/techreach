@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
   Instagram,
   Zap,
   Send
@@ -18,10 +18,10 @@ const Footer: React.FC = () => {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     setEmail('');
     setIsSubmitting(false);
     // You could show a success message here
@@ -83,9 +83,9 @@ const Footer: React.FC = () => {
               </div>
               <span className="text-2xl font-bold">TECH REACH</span>
             </div>
-            
+
             <p className="text-gray-300 mb-6 leading-relaxed">
-              We transform businesses through cutting-edge technology solutions. 
+              We transform businesses through cutting-edge technology solutions.
               Partner with us to build the future of your digital presence.
             </p>
 
@@ -93,15 +93,20 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="w-5 h-5 text-purple-400" />
-                <span>hello@techreach.com</span>
+                <div className='grid'>
+                  <span>officialtechreach@gmail.com</span>
+                </div>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="w-5 h-5 text-purple-400" />
-                <span>+1 (555) 123-4567</span>
+                <div className='grid'>
+                  <span>+251 90 752 3814</span>
+                  <span>+251 90 292 0301</span>
+                </div>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="w-5 h-5 text-purple-400" />
-                <span>123 Tech Street, San Francisco, CA 94105</span>
+                <span>Ethiopia —  Hawassa</span>
               </div>
             </div>
           </div>
@@ -113,8 +118,8 @@ const Footer: React.FC = () => {
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link}>
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {link}
@@ -135,7 +140,7 @@ const Footer: React.FC = () => {
             <p className="text-gray-300 mb-6">
               Subscribe to our newsletter for the latest tech insights and company updates
             </p>
-            
+
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <div className="relative flex-1">
                 <input
@@ -173,7 +178,7 @@ const Footer: React.FC = () => {
             <div className="text-gray-400 text-sm">
               © 2024 TECH REACH. All rights reserved.
             </div>
-            
+
             {/* Social Links */}
             <div className="flex items-center space-x-4">
               {socialLinks.map((social) => {

@@ -166,7 +166,7 @@ const Projects: React.FC = () => {
     {
       id: 4,
       title: 'CMS',
-      description: 'E-commerce-like product delivery platform with machine learning features for predictive inventory and customer behavior analytics.',
+      description: 'E-commerce-like product delivery platform',
       image: cms,
       images: [cms, cms1, cms3],
       technologies: ['Python', 'TensorFlow', 'AWS', 'React'],
@@ -176,8 +176,8 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Smart IoT Platform (Bekhan)',
-      description: 'Pharmacy e-commerce system that integrates smart device monitoring, automated ordering, and inventory control.',
+      title: 'Bekhan',
+      description: 'Pharmacy e-commerce system that integrates smart device monitoring, ordering, and inventory control.',
       image: bekhan,
       images: [bekhan, bekhan1, bekhan2, bekhan3, bekhan4, bekhan5],
       technologies: ['Node.js', 'MQTT', 'InfluxDB', 'Grafana'],

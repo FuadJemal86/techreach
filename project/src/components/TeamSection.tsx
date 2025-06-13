@@ -99,13 +99,13 @@ const TeamSection: React.FC = () => {
         },
         {
             name: 'Abdulahi Redwan',
-            role: 'Full Stack Developer',
+            role: 'Founder, co Founder and STO',
             email: 'abdulahiredwann@gmail.com',
             phone: '+251 90 752 3814',
             image: abdu,
             github: 'https://github.com/abdulahiredwann',
             linkedin: 'https://www.linkedin.com/in/abdulahi-redwan/',
-            twitter: 'https://twitter.com/abdulahiredwan'
+            twitter: 'https://x.com/abd_red08'
         }
         // {
         //     name: 'Faysel Nesray',
@@ -161,7 +161,7 @@ const TeamSection: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-gray-400 text-sm">Email</p>
-                                            <p className="text-white">contact@company.com</p>
+                                            <p className="text-white">officialtechreach@gmail.com</p>
                                         </div>
                                     </div>
 
@@ -171,7 +171,10 @@ const TeamSection: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-gray-400 text-sm">Phone</p>
-                                            <p className="text-white">+251 911 000 000</p>
+                                            <div className='grid'>
+                                                <span>+251 90 752 3814</span>
+                                                <span>+251 90 292 0301</span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -181,7 +184,7 @@ const TeamSection: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-gray-400 text-sm">Location</p>
-                                            <p className="text-white">Addis Ababa, Ethiopia</p>
+                                            <p className="text-white">Ethiopia — Hawassa</p>
                                         </div>
                                     </div>
                                 </div>
