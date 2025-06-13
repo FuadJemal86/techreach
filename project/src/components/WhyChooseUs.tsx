@@ -10,10 +10,10 @@ const WhyChooseUs: React.FC = () => {
   });
 
   const finalCounts = {
-    projects: 200,
-    clients: 50,
+    projects: 23,
+    clients: 12,
     years: 5,
-    growth: 150
+    growth: 73
   };
 
   useEffect(() => {

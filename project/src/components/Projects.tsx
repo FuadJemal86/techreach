@@ -1,16 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ExternalLink, Github, ArrowRight, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Lazy Image Component
-interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+// Enhanced Progressive Image Component with blur effect (no loading spinner)
+interface ProgressiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   className?: string;
+  placeholderSrc?: string;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = '', ...props }) => {
+const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
+  src,
+  alt,
+  className = '',
+  placeholderSrc,
+  ...props
+}) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(false);
+  const [imageError, setImageError] = useState<boolean>(false);
   const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,7 +31,97 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = '', ...prop
       },
       {
         threshold: 0.1,
-        rootMargin: '50px'
+        rootMargin: '100px' // Start loading 100px before the image comes into view
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+    setIsLoaded(true);
+  };
+
+  return (
+    <div ref={imgRef} className={`relative overflow-hidden ${className}`} {...props}>
+      {/* Blur placeholder background */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'
+          }`}
+        style={{
+          backgroundImage: isInView ? `url(${src})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(20px) brightness(0.7)',
+          transform: 'scale(1.1)', // Slightly scale to hide blur edges
+        }}
+      />
+
+      {/* Actual image */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`relative z-20 w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 filter-none' : 'opacity-0'
+            }`}
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          loading="lazy"
+        />
+      )}
+
+      {/* Error fallback */}
+      {imageError && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center z-30">
+          <div className="text-center text-gray-400">
+            <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <p className="text-sm">Image unavailable</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Alternative: Using react-progressive-graceful-image approach (no loading spinner)
+interface BlurImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+  placeholder?: string;
+}
+
+const BlurToSharpImage: React.FC<BlurImageProps> = ({ src, alt, className = '', placeholder }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageInView, setImageInView] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setImageInView(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1,
       }
     );
 
@@ -35,23 +133,29 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = '', ...prop
   }, []);
 
   return (
-    <div ref={imgRef} className={`relative ${className}`} {...props}>
-      {/* Placeholder while loading */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
+    <div ref={imgRef} className={`relative ${className}`}>
+      {/* Blurred placeholder */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${imageLoaded ? 'opacity-0' : 'opacity-100'
+          }`}
+        style={{
+          backgroundImage: imageInView ? `url(${src})` : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(10px) brightness(0.8)',
+          transform: 'scale(1.05)',
+        }}
+      />
 
-      {/* Actual image */}
-      {isInView && (
+      {/* Sharp image */}
+      {imageInView && (
         <img
           src={src}
           alt={alt}
-          className={`${className} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
+          className={`relative z-10 w-full h-full object-cover transition-all duration-700 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setIsLoaded(true)}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(true)}
         />
       )}
     </div>
@@ -309,10 +413,10 @@ const Projects: React.FC = () => {
               >
                 {/* Project Image */}
                 <div className="relative h-64 md:h-80 overflow-hidden">
-                  <LazyImage
+                  <BlurToSharpImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
 
@@ -374,7 +478,7 @@ const Projects: React.FC = () => {
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
-                <LazyImage
+                <ProgressiveImage
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -445,7 +549,7 @@ const Projects: React.FC = () => {
               {/* Image Gallery */}
               <div className="mb-6">
                 <div className="relative">
-                  <LazyImage
+                  <BlurToSharpImage
                     src={selectedProject.images ? selectedProject.images[currentImageIndex] : selectedProject.image}
                     alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-64 md:h-80 object-cover rounded-2xl"
@@ -489,7 +593,7 @@ const Projects: React.FC = () => {
                           : 'border-white/20 hover:border-white/40'
                           }`}
                       >
-                        <LazyImage
+                        <ProgressiveImage
                           src={img}
                           alt={`Thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"

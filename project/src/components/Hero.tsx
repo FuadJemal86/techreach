@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0 z-0"
         style={{ background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%)' }}
       />
-      
+
       {/* Floating Geometric Shapes */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-20 left-10 w-20 h-20 border border-purple-500/30 rotate-45 animate-pulse"></div>
@@ -83,41 +83,29 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            We Build the <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Future</span>. Faster.
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Empowering businesses with cutting-edge web systems and global digital presence. 
-            We transform ideas into scalable digital solutions.
-          </p>
+          <div className='pb-20'>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              We Build the <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Future</span>. Faster.
+            </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="group bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-full hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center space-x-2">
-              <span className="font-semibold">Book a Discovery Call</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            
-            <button className="group flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
-              <div className="w-12 h-12 rounded-full border-2 border-gray-400 flex items-center justify-center group-hover:border-white transition-colors">
-                <Play className="w-5 h-5 ml-1" />
-              </div>
-              <span>Watch Demo</span>
-            </button>
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Empowering businesses with cutting-edge web systems and global digital presence.
+              We transform ideas into scalable digital solutions.
+            </p>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/10">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">200+</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">23+</div>
               <div className="text-gray-400 text-sm">Projects Delivered</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">50+</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">12+</div>
               <div className="text-gray-400 text-sm">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">99%</div>
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">95%</div>
               <div className="text-gray-400 text-sm">Success Rate</div>
             </div>
             <div className="text-center">

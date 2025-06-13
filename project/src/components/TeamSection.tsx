@@ -89,7 +89,7 @@ const TeamSection: React.FC = () => {
     const teamMembers = [
         {
             name: 'Fuad Jemal',
-            role: 'Full Stack Developer',
+            role: 'Founder',
             email: 'fuad47722@gmail.com',
             phone: '+251 90 292 0301',
             image: fuad,
@@ -99,7 +99,7 @@ const TeamSection: React.FC = () => {
         },
         {
             name: 'Abdulahi Redwan',
-            role: 'Founder, co Founder and STO',
+            role: 'co Founder and STO',
             email: 'abdulahiredwann@gmail.com',
             phone: '+251 90 752 3814',
             image: abdu,

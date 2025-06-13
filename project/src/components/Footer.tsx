@@ -32,10 +32,7 @@ const Footer: React.FC = () => {
       title: 'Services',
       links: [
         'Web Development',
-        'Mobile Apps',
-        'Cloud Solutions',
         'UI/UX Design',
-        'Digital Marketing',
         'Consulting'
       ]
     },
@@ -48,17 +45,6 @@ const Footer: React.FC = () => {
         'Case Studies',
         'Blog',
         'Contact'
-      ]
-    },
-    {
-      title: 'Resources',
-      links: [
-        'Documentation',
-        'Help Center',
-        'Privacy Policy',
-        'Terms of Service',
-        'Cookie Policy',
-        'FAQ'
       ]
     }
   ];
@@ -74,7 +60,7 @@ const Footer: React.FC = () => {
     <footer id="contact" className="bg-primary/50 backdrop-blur-sm border-t border-white/10">
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">

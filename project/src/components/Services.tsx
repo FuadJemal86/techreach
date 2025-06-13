@@ -109,16 +109,6 @@ const Services: React.FC = () => {
             );
           })}
         </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <p className="text-gray-300 mb-6">
-            Ready to transform your digital presence?
-          </p>
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-full hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 font-semibold">
-            Get Custom Quote
-          </button>
-        </div>
       </div>
     </section>
   );
