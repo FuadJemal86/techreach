@@ -1,5 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ExternalLink, Github, ArrowRight, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Lazy Image Component
+interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = '', ...props }) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isInView, setIsInView] = useState<boolean>(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={`relative ${className}`} {...props}>
+      {/* Placeholder while loading */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      {/* Actual image */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
+        />
+      )}
+    </div>
+  );
+};
 
 // Import images (in your actual app, these would be real imports)
 const flour = '/Images/Flour/flour.png';
@@ -48,6 +105,11 @@ const siham2 = '/Images/Siham/siham2.png';
 const siham3 = '/Images/Siham/siham3.png';
 const siham4 = '/Images/Siham/siham4.png';
 
+const Jejan1 = '/../../public/Images/jejan/Jejan1.jpg';
+const Jejan2 = '/../../public/Images/jejan/Jejan2.jpg';
+const Jejan3 = '/../../public/Images/jejan/Jejan3.jpg';
+const Jejan4 = '/../../public/Images/jejan/Jejan4.jpg';
+const Jejan5 = '/../../public/Images/jejan/Jejan5.jpg';
 
 interface Project {
   id: number;
@@ -85,7 +147,7 @@ const Projects: React.FC = () => {
       description: 'A dental service application offering patient registration, appointment booking, and real-time communication between dentists and patients.',
       image: nebal,
       images: [nebal, nebal1, nebal2],
-      technologies: ['React Native', 'Firebase', 'Blockchain', 'AI/ML'],
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       liveUrl: '#',
       githubUrl: '#',
       featured: true
@@ -174,15 +236,14 @@ const Projects: React.FC = () => {
       id: 10,
       title: 'Jejan E-Commerce',
       description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: siham1,
-      images: [siham1, siham2, siham3, siham4],
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
       category: 'Web Development',
       technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false
     }
-
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -222,7 +283,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden" >
+    <section id="projects" className="py-24 relative overflow-hidden bg-gray-900">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -248,12 +309,12 @@ const Projects: React.FC = () => {
               >
                 {/* Project Image */}
                 <div className="relative h-64 md:h-80 overflow-hidden">
-                  <img
+                  <LazyImage
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
 
                   {/* Overlay Actions */}
                   <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -313,12 +374,12 @@ const Projects: React.FC = () => {
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <LazyImage
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
 
                 {/* Overlay Actions */}
                 <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -328,7 +389,6 @@ const Projects: React.FC = () => {
                   >
                     <ExternalLink className="w-4 h-4 text-white" />
                   </a>
-
                 </div>
               </div>
 
@@ -337,26 +397,9 @@ const Projects: React.FC = () => {
                 <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3">
-                  {project.description}
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                  {project.description.length > 100 ? project.description.substring(0, 100) + '...' : project.description}
                 </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {project.technologies.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-white/10 rounded text-xs text-gray-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 bg-white/10 rounded text-xs text-gray-300">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
 
                 {/* View Details Button */}
                 <button
@@ -402,7 +445,7 @@ const Projects: React.FC = () => {
               {/* Image Gallery */}
               <div className="mb-6">
                 <div className="relative">
-                  <img
+                  <LazyImage
                     src={selectedProject.images ? selectedProject.images[currentImageIndex] : selectedProject.image}
                     alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-64 md:h-80 object-cover rounded-2xl"
@@ -446,7 +489,7 @@ const Projects: React.FC = () => {
                           : 'border-white/20 hover:border-white/40'
                           }`}
                       >
-                        <img
+                        <LazyImage
                           src={img}
                           alt={`Thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"

@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import fuad from '../../public/Images/profiles/fuad.jpg'
+import abdu from '../../public/Images/profiles/abdu.jpg'
+import feysel from '../../public/Images/profiles/feysel.jpg'
 
 const TeamSection: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -87,33 +90,33 @@ const TeamSection: React.FC = () => {
         {
             name: 'Fuad Jemal',
             role: 'Full Stack Developer',
-            email: 'fuad.jemal@company.com',
-            phone: '+251 911 123 456',
-            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-            github: 'https://github.com/fuadjemal',
-            linkedin: 'https://linkedin.com/in/fuadjemal',
-            twitter: 'https://twitter.com/fuadjemal'
+            email: 'fuad47722@gmail.com',
+            phone: '+251 90 292 0301',
+            image: fuad,
+            github: 'https://github.com/FuadJemal86',
+            linkedin: 'https://www.linkedin.com/in/fuad-jemal-757601302/',
+            twitter: 'https://x.com/FuadJemal185415'
         },
         {
             name: 'Abdulahi Redwan',
             role: 'Full Stack Developer',
-            email: 'abdulahi.redwan@company.com',
-            phone: '+251 911 789 012',
-            image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-            github: 'https://github.com/abdulahiredwan',
-            linkedin: 'https://linkedin.com/in/abdulahiredwan',
+            email: 'abdulahiredwann@gmail.com',
+            phone: '+251 90 752 3814',
+            image: abdu,
+            github: 'https://github.com/abdulahiredwann',
+            linkedin: 'https://www.linkedin.com/in/abdulahi-redwan/',
             twitter: 'https://twitter.com/abdulahiredwan'
-        },
-        {
-            name: 'Faysel Nesray',
-            role: 'UI/UX Designer',
-            email: 'faysel.nesray@company.com',
-            phone: '+251 911 345 678',
-            image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
-            github: 'https://github.com/fayselnesray',
-            linkedin: 'https://linkedin.com/in/fayselnesray',
-            twitter: 'https://twitter.com/fayselnesray'
         }
+        // {
+        //     name: 'Faysel Nesray',
+        //     role: 'UI/UX Designer',
+        //     email: 'faysel.nesray@company.com',
+        //     phone: '+251 97 986 4633',
+        //     image: feysel,
+        //     github: '#',
+        //     linkedin: 'https://linkedin.com/in/fayselnesray',
+        //     twitter: 'https://twitter.com/fayselnesray'
+        // }
     ];
 
     return (
@@ -256,7 +259,7 @@ const TeamSection: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                         {teamMembers.map((member, index) => (
                             <div
                                 key={index}
