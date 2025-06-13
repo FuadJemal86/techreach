@@ -9,7 +9,7 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App /> {/* ✅ App is now inside Router context */}
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );
