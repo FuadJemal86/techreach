@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
+import techReach from '../../public/Images/teach1.svg'
+
 
 const TeamSectionHeader: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,9 +32,7 @@ const TeamSectionHeader: React.FC = () => {
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                            <Zap className="w-5 h-5 text-white" />
-                        </div>
+                        <span><img className='w-10 h-10' src={techReach} alt="" /></span>
                         <span className="text-xl font-bold">TECH REACH</span>
                     </div>
 

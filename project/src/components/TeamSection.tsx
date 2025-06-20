@@ -1,17 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
-import fuad from '../../public/Images/profiles/fuad.jpg'
-import abdu from '../../public/Images/profiles/abdu.jpg'
-import feysel from '../../public/Images/profiles/feysel.jpg'
+import fuad from '../../public/Images/profiles/fuad.jpg';
+import abdu from '../../public/Images/profiles/abdu.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// TypeScript interfaces
+interface FormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+interface Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    alpha: number;
+}
+
+interface TeamMember {
+    name: string;
+    role: string;
+    email: string;
+    phone: string;
+    image: string;
+    github: string;
+    linkedin: string;
+    twitter: string;
+}
+
+interface EmailConfig {
+    serviceId: string;
+    templateId: string;
+    publicKey: string;
+}
 
 const TeamSection: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
         subject: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -23,13 +58,7 @@ const TeamSection: React.FC = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const particles: Array<{
-            x: number;
-            y: number;
-            vx: number;
-            vy: number;
-            alpha: number;
-        }> = [];
+        const particles: Particle[] = [];
 
         // Create particles
         for (let i = 0; i < 30; i++) {
@@ -42,7 +71,7 @@ const TeamSection: React.FC = () => {
             });
         }
 
-        const animate = () => {
+        const animate = (): void => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             particles.forEach((particle) => {
@@ -63,7 +92,7 @@ const TeamSection: React.FC = () => {
 
         animate();
 
-        const handleResize = () => {
+        const handleResize = (): void => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         };
@@ -72,21 +101,133 @@ const TeamSection: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = () => {
-        console.log('Form submitted:', formData);
-        // Handle form submission here
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+    // EmailJS configuration - Replace with your actual values
+    const EMAIL_CONFIG: EmailConfig = {
+        serviceId: 'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
+        templateId: 'YOUR_TEMPLATE_ID',    // Replace with your EmailJS template ID
+        publicKey: 'YOUR_PUBLIC_KEY'       // Replace with your EmailJS public key
     };
 
-    const teamMembers = [
+    const validateForm = (): boolean => {
+        if (!formData.name.trim()) {
+            toast('Please enter your name.');
+            return false;
+        }
+        if (!formData.email.trim()) {
+            toast('Please enter your email.');
+            return false;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            toast('Please enter a valid email address.');
+            return false;
+        }
+        if (!formData.message.trim()) {
+            toast('Please enter your message.');
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = async (): Promise<void> => {
+        if (!validateForm()) return;
+
+        setIsSubmitting(true);
+
+        try {
+            // Method 1: Using EmailJS (requires setup and installation)
+            // First install: npm install @emailjs/browser
+            // Uncomment this if you set up EmailJS
+            /*
+            const emailjs = (await import('@emailjs/browser')).default;
+            
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject || 'Contact Form Submission',
+                message: formData.message,
+                to_email: 'officialtechreach@gmail.com'
+            };
+
+            await emailjs.send(
+                EMAIL_CONFIG.serviceId,
+                EMAIL_CONFIG.templateId,
+                templateParams,
+                EMAIL_CONFIG.publicKey
+            );
+            */
+
+            // Method 2: Using Formspree (replace with your form ID)
+            // Sign up at formspree.io and replace YOUR_FORM_ID
+            const response = await fetch('https://formspree.io/f/mblyadwo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject || 'Contact Form Submission',
+                    message: formData.message,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            ('Message sent successfully! We\'ll get back to you soon.');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+
+        } catch (error) {
+            console.error('Error sending email:', error);
+            toast('Failed to send message. Please try again or contact us directly at officialtechreach@gmail.com');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    // Method 3: Backend API call (if you have a backend)
+    const handleSubmitWithAPI = async (): Promise<void> => {
+        if (!validateForm()) return;
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    to: 'officialtechreach@gmail.com'
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send email');
+            }
+
+            const result = await response.json();
+            toast.success('Message sent successfully!');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+
+        } catch (error) {
+            console.error('Error:', error);
+            toast.success('Failed to send message. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const teamMembers: TeamMember[] = [
         {
             name: 'Fuad Jemal',
             role: 'Founder',
@@ -107,6 +248,7 @@ const TeamSection: React.FC = () => {
             linkedin: 'https://www.linkedin.com/in/abdulahi-redwan/',
             twitter: 'https://x.com/abd_red08'
         }
+        // Uncomment if you want to add the third member
         // {
         //     name: 'Faysel Nesray',
         //     role: 'UI/UX Designer',
@@ -171,7 +313,7 @@ const TeamSection: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-gray-400 text-sm">Phone</p>
-                                            <div className='grid'>
+                                            <div className="grid">
                                                 <span>+251 90 752 3814</span>
                                                 <span>+251 90 292 0301</span>
                                             </div>
@@ -199,20 +341,22 @@ const TeamSection: React.FC = () => {
                                         <input
                                             type="text"
                                             name="name"
-                                            placeholder="Your Name"
+                                            placeholder="Your Name *"
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-400"
+                                            required
                                         />
                                     </div>
                                     <div>
                                         <input
                                             type="email"
                                             name="email"
-                                            placeholder="Your Email"
+                                            placeholder="Your Email *"
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-400"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -231,20 +375,25 @@ const TeamSection: React.FC = () => {
                                 <div>
                                     <textarea
                                         name="message"
-                                        placeholder="Your Message"
+                                        placeholder="Your Message *"
                                         rows={5}
                                         value={formData.message}
                                         onChange={handleInputChange}
                                         className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white placeholder-gray-400 resize-none"
-                                    ></textarea>
+                                        required
+                                    />
                                 </div>
 
                                 <button
                                     onClick={handleSubmit}
-                                    className="w-full group bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-lg hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center space-x-2"
+                                    disabled={isSubmitting}
+                                    className="w-full group bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-lg hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    <span className="font-semibold">Send Message</span>
+                                    <span className="font-semibold">
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                                    </span>
                                     <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <ToastContainer aria-label="notification" />
                                 </button>
                             </div>
                         </div>
@@ -301,18 +450,24 @@ const TeamSection: React.FC = () => {
                                 <div className="flex justify-center space-x-4">
                                     <a
                                         href={member.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
                                     >
                                         <Github className="w-5 h-5" />
                                     </a>
                                     <a
                                         href={member.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
                                     >
                                         <Linkedin className="w-5 h-5" />
                                     </a>
                                     <a
                                         href={member.twitter}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-600 transition-colors"
                                     >
                                         <Twitter className="w-5 h-5" />

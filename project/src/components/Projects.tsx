@@ -209,10 +209,10 @@ const siham2 = '/Images/Siham/siham2.png';
 const siham3 = '/Images/Siham/siham3.png';
 const siham4 = '/Images/Siham/siham4.png';
 
-const Jejan1 = '/../../public/Images/jejan/Jejan1.jpg';
-const Jejan2 = '/../../public/Images/jejan/Jejan2.jpg';
-const Jejan3 = '/../../public/Images/jejan/Jejan3.jpg';
-const Jejan4 = '/../../public/Images/jejan/Jejan4.jpg';
+const Jejan1 = '/Images/jejan/Jejan1.png';
+const Jejan2 = '/Images/jejan/Jejan2.jpg';
+const Jejan3 = '/Images/jejan/Jejan3.jpg';
+const Jejan4 = '/Images/jejan/Jejan4.jpg';
 const Jejan5 = '/../../public/Images/jejan/Jejan5.jpg';
 
 interface Project {
