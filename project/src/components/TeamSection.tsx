@@ -231,7 +231,7 @@ const TeamSection: React.FC = () => {
         {
             name: 'Fuad Jemal',
             role: 'Founder',
-            email: 'fuad47722@gmail.com',
+            email: 'fuad.jemal.mail@gmail.com',
             phone: '+251 90 292 0301',
             image: fuad,
             github: 'https://github.com/FuadJemal86',
