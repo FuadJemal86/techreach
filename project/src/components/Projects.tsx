@@ -263,7 +263,7 @@ const Projects: React.FC = () => {
       image: alif,
       images: [alif, alif4, alif2, alif3, alif5],
       technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Docker'],
-      liveUrl: 'https://alif-school-system.vercel.app/',
+      liveUrl: '',
       githubUrl: '#',
       featured: false
     },
@@ -426,7 +426,6 @@ const Projects: React.FC = () => {
                       href={project.liveUrl}
                       className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                     >
-                      <ExternalLink className="w-5 h-5 text-white" />
                     </a>
                   </div>
                 </div>
@@ -491,7 +490,6 @@ const Projects: React.FC = () => {
                     href={project.liveUrl}
                     className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                   >
-                    <ExternalLink className="w-4 h-4 text-white" />
                   </a>
                 </div>
               </div>
@@ -626,21 +624,16 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-3">Project Links</h4>
                   <div className="flex space-x-4 mb-6">
                     <a
                       href={selectedProject.liveUrl}
-                      className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors"
+                      className=""
                     >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
                     </a>
                     <a
                       href={selectedProject.githubUrl}
-                      className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors"
+                      className=""
                     >
-                      <Github className="w-4 h-4" />
-                      <span>Source Code</span>
                     </a>
                   </div>
 

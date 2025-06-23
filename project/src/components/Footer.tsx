@@ -10,7 +10,7 @@ import {
   Zap,
   Send
 } from 'lucide-react';
-import techReach from '../../public/Images/teach1.svg'
+import techReach from '../../public/Images/teach3.svg'
 
 
 const Footer: React.FC = () => {
