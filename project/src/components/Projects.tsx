@@ -236,7 +236,7 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Useman Flour',
+      title: 'Usman Flour',
       description: 'Comprehensive flour management system that tracks input and output of flour inventory, manages payments, and offers real-time analytics.',
       image: flour,
       images: [flour, flour2, flour3, flour4, flour5, flour6, flour1],
