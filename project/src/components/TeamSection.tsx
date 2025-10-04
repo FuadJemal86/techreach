@@ -240,7 +240,7 @@ const TeamSection: React.FC = () => {
         },
         {
             name: 'Abdulahi Redwan',
-            role: 'co Founder and STO',
+            role: 'co Founder and CTO',
             email: 'abdulahiredwann@gmail.com',
             phone: '+251 90 752 3814',
             image: abdu,
