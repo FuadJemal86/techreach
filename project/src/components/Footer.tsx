@@ -10,10 +10,10 @@ import {
   Zap,
   Send
 } from 'lucide-react';
-import techReach from '../../public/Images/teach1.svg'
-
 
 const Footer: React.FC = () => {
+
+
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -65,9 +65,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <span><img className='w-10 h-10' src={techReach} alt="" /></span>
-              <span className="text-2xl font-bold">TECH REACH</span>
+            <div className="flex items-center shrink-0">
+              <img
+                src="/public/images/noorifyLogo.png"
+                alt="Noorify Logo"
+                className="h-48 w-48 object-contain"
+              />
             </div>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
