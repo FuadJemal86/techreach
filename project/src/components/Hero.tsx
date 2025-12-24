@@ -67,53 +67,45 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Animated Background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(52, 191, 189, 0.15) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse at center, rgba(52, 191, 189, 0.08) 0%, rgba(255, 255, 255, 0.95) 70%)' }}
       />
-
-      {/* Floating Geometric Shapes */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-20 h-20 border border-[#34bfbd]/30 rotate-45 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-[#34bfbd]/20 to-cyan-500/20 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-40 left-20 w-12 h-12 border-2 border-[#34bfbd]/40 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-40 w-24 h-24 border border-[#34bfbd]/30 rotate-12 animate-pulse"></div>
-      </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <div className='pb-20'>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              We Build the <span className="bg-gradient-to-r from-[#34bfbd] to-cyan-300 bg-clip-text text-transparent">Future</span>. Faster.
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-gray-900">
+              We Build the <span className="bg-gradient-to-r from-[#34bfbd] to-cyan-400 bg-clip-text text-transparent">Future</span>. Faster.
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Empowering businesses with cutting-edge web systems and global digital presence.
               We transform ideas into scalable digital solutions.
             </p>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-gray-200">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: BRAND_COLOR }}>23+</div>
-              <div className="text-gray-400 text-sm">Projects Delivered</div>
+              <div className="text-gray-500 text-sm">Projects Delivered</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: BRAND_COLOR }}>12+</div>
-              <div className="text-gray-400 text-sm">Happy Clients</div>
+              <div className="text-gray-500 text-sm">Happy Clients</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: BRAND_COLOR }}>95%</div>
-              <div className="text-gray-400 text-sm">Success Rate</div>
+              <div className="text-gray-500 text-sm">Success Rate</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: BRAND_COLOR }}>24/7</div>
-              <div className="text-gray-400 text-sm">Support</div>
+              <div className="text-gray-500 text-sm">Support</div>
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
       },
       {
         threshold: 0.1,
-        rootMargin: '100px' // Start loading 100px before the image comes into view
+        rootMargin: '100px'
       }
     );
 
@@ -53,20 +53,18 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
 
   return (
     <div ref={imgRef} className={`relative overflow-hidden ${className}`} {...props}>
-      {/* Blur placeholder background */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'
+        className={`absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 transition-opacity duration-700 ${isLoaded ? 'opacity-0' : 'opacity-100'
           }`}
         style={{
           backgroundImage: isInView ? `url(${src})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'blur(20px) brightness(0.7)',
-          transform: 'scale(1.1)', // Slightly scale to hide blur edges
+          filter: 'blur(20px) brightness(1.1)',
+          transform: 'scale(1.1)',
         }}
       />
 
-      {/* Actual image */}
       {isInView && (
         <img
           src={src}
@@ -79,11 +77,10 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
         />
       )}
 
-      {/* Error fallback */}
       {imageError && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center z-30">
-          <div className="text-center text-gray-400">
-            <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center z-30">
+          <div className="text-center text-gray-500">
+            <div className="w-12 h-12 bg-gray-300 rounded-lg flex items-center justify-center mx-auto mb-2">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
               </svg>
@@ -96,7 +93,7 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   );
 };
 
-// Alternative: Using react-progressive-graceful-image approach (no loading spinner)
+// Alternative blur image component
 interface BlurImageProps {
   src: string;
   alt: string;
@@ -134,20 +131,18 @@ const BlurToSharpImage: React.FC<BlurImageProps> = ({ src, alt, className = '', 
 
   return (
     <div ref={imgRef} className={`relative ${className}`}>
-      {/* Blurred placeholder */}
       <div
         className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${imageLoaded ? 'opacity-0' : 'opacity-100'
           }`}
         style={{
-          backgroundImage: imageInView ? `url(${src})` : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundImage: imageInView ? `url(${src})` : 'linear-gradient(135deg, #34bfbd 0%, #22d3ee 100%)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'blur(10px) brightness(0.8)',
+          filter: 'blur(10px) brightness(1.1)',
           transform: 'scale(1.05)',
         }}
       />
 
-      {/* Sharp image */}
       {imageInView && (
         <img
           src={src}
@@ -162,7 +157,7 @@ const BlurToSharpImage: React.FC<BlurImageProps> = ({ src, alt, className = '', 
   );
 };
 
-// Import images (in your actual app, these would be real imports)
+// Import images
 const flour = '/Images/Flour/flour.png';
 const flour2 = '/Images/Flour/flour2.png';
 const flour3 = '/Images/Flour/flour3.png';
@@ -387,28 +382,35 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-gray-900">
+    <section id="projects" className="py-24 relative overflow-hidden bg-white">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Our <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+            Our <span className="bg-gradient-to-r from-[#34bfbd] to-cyan-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Discover our portfolio of innovative solutions that have transformed businesses across various industries
           </p>
         </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">Featured Projects</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Featured Projects</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.slice(0, 2).map((project, index) => (
               <div
                 key={project.id}
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20"
+                className="group relative bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#34bfbd]/30 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl"
                 style={{
-                  animationDelay: `${index * 200}ms`
+                  animationDelay: `${index * 200}ms`,
+                  boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 20px 60px 0 rgba(52, 191, 189, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px 0 rgba(0, 0, 0, 0.05)';
                 }}
               >
                 {/* Project Image */}
@@ -418,13 +420,13 @@ const Projects: React.FC = () => {
                     alt={project.title}
                     className="w-full h-full group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
 
                   {/* Overlay Actions */}
                   <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a
                       href={project.liveUrl}
-                      className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                      className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
                     >
                     </a>
                   </div>
@@ -432,10 +434,10 @@ const Projects: React.FC = () => {
 
                 {/* Project Content */}
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#34bfbd] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-6 leading-relaxed">
                     {project.description}
                   </p>
 
@@ -444,7 +446,7 @@ const Projects: React.FC = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300"
+                        className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 border border-gray-200"
                       >
                         {tech}
                       </span>
@@ -454,7 +456,7 @@ const Projects: React.FC = () => {
                   {/* Learn More Button */}
                   <button
                     onClick={() => openModal(project)}
-                    className="group/btn flex items-center space-x-2 text-purple-400 hover:text-white transition-colors"
+                    className="group/btn flex items-center space-x-2 text-[#34bfbd] hover:text-cyan-600 transition-colors font-medium"
                   >
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -470,9 +472,16 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10"
+              className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#34bfbd]/30 transition-all duration-300 hover:transform hover:scale-105"
               style={{
-                animationDelay: `${index * 100}ms`
+                animationDelay: `${index * 100}ms`,
+                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.05)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 10px 40px 0 rgba(52, 191, 189, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 2px 8px 0 rgba(0, 0, 0, 0.05)';
               }}
             >
               {/* Project Image */}
@@ -482,13 +491,13 @@ const Projects: React.FC = () => {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"></div>
 
                 {/* Overlay Actions */}
                 <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
                     href={project.liveUrl}
-                    className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                    className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
                   >
                   </a>
                 </div>
@@ -496,17 +505,17 @@ const Projects: React.FC = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#34bfbd] transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {project.description.length > 100 ? project.description.substring(0, 100) + '...' : project.description}
                 </p>
 
                 {/* View Details Button */}
                 <button
                   onClick={() => openModal(project)}
-                  className="group/btn flex items-center space-x-2 text-purple-400 hover:text-white transition-colors text-sm"
+                  className="group/btn flex items-center space-x-2 text-[#34bfbd] hover:text-cyan-600 transition-colors text-sm font-medium"
                 >
                   <span>View Details</span>
                   <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
@@ -518,10 +527,22 @@ const Projects: React.FC = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-600 mb-6">
             Have a project in mind? Let's bring your vision to life.
           </p>
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-full hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 font-semibold">
+          <button
+            className="px-8 py-4 rounded-full font-semibold text-white transition-all duration-300 hover:shadow-xl"
+            style={{
+              background: 'linear-gradient(to right, #34bfbd, #22d3ee)',
+              boxShadow: '0 4px 14px 0 rgba(52, 191, 189, 0.25)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = '0 10px 30px 0 rgba(52, 191, 189, 0.35)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(52, 191, 189, 0.25)';
+            }}
+          >
             Start Your Project
           </button>
         </div>
@@ -529,16 +550,16 @@ const Projects: React.FC = () => {
 
       {/* Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-900">{selectedProject.title}</h3>
               <button
                 onClick={closeModal}
-                className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-5 h-5 text-gray-700" />
               </button>
             </div>
 
@@ -553,25 +574,25 @@ const Projects: React.FC = () => {
                     className="w-full h-64 md:h-80 object-cover rounded-2xl"
                   />
 
-                  {/* Navigation arrows - only show if multiple images */}
+                  {/* Navigation arrows */}
                   {selectedProject.images && selectedProject.images.length > 1 && (
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
                       >
-                        <ChevronLeft className="w-5 h-5 text-white" />
+                        <ChevronLeft className="w-5 h-5 text-gray-700" />
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
                       >
-                        <ChevronRight className="w-5 h-5 text-white" />
+                        <ChevronRight className="w-5 h-5 text-gray-700" />
                       </button>
 
                       {/* Image counter */}
-                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 rounded-full px-3 py-1">
-                        <span className="text-white text-sm">
+                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 rounded-full px-3 py-1 shadow-lg">
+                        <span className="text-gray-700 text-sm font-medium">
                           {currentImageIndex + 1} / {selectedProject.images.length}
                         </span>
                       </div>
@@ -579,7 +600,7 @@ const Projects: React.FC = () => {
                   )}
                 </div>
 
-                {/* Thumbnail pagination - only show if multiple images */}
+                {/* Thumbnail pagination */}
                 {selectedProject.images && selectedProject.images.length > 1 && (
                   <div className="flex justify-center mt-4 space-x-2 overflow-x-auto pb-2">
                     {selectedProject.images.map((img, index) => (
@@ -587,8 +608,8 @@ const Projects: React.FC = () => {
                         key={index}
                         onClick={() => goToImage(index)}
                         className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${currentImageIndex === index
-                          ? 'border-purple-400 ring-2 ring-purple-400/50'
-                          : 'border-white/20 hover:border-white/40'
+                          ? 'border-[#34bfbd] ring-2 ring-[#34bfbd]/30'
+                          : 'border-gray-200 hover:border-gray-300'
                           }`}
                       >
                         <ProgressiveImage
@@ -605,17 +626,17 @@ const Projects: React.FC = () => {
               {/* Project Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-3">Description</h4>
-                  <p className="text-gray-300 leading-relaxed mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Description</h4>
+                  <p className="text-gray-600 leading-relaxed mb-6">
                     {selectedProject.description}
                   </p>
 
-                  <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300"
+                        className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 border border-gray-200"
                       >
                         {tech}
                       </span>
@@ -637,8 +658,8 @@ const Projects: React.FC = () => {
                     </a>
                   </div>
 
-                  <h4 className="text-lg font-semibold text-white mb-3">Features</h4>
-                  <ul className="text-gray-300 space-y-2">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Features</h4>
+                  <ul className="text-gray-600 space-y-2">
                     <li>• Real-time data processing</li>
                     <li>• Responsive design</li>
                     <li>• User authentication</li>

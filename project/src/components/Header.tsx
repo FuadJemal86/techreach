@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from '../../public/Images/noorifyLogo.png'
+
 
 // Types
 interface NavItem {
@@ -43,16 +45,16 @@ const Header: React.FC = () => {
 
   // Render
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-lg border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20 md:h-20">
 
           {/* Logo */}
-          <div className="flex items-center shrink-0">
+          <div className="flex items-center">
             <img
-              src="/public/images/noorifyLogo.png"
+              src={logo}
               alt="Noorify Logo"
-              className="h-44 w-44 object-contain"
+              className="h-56 w-56 object-contain"
             />
           </div>
 
@@ -62,14 +64,14 @@ const Header: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors duration-200"
+                className="text-gray-700 hover:text-[#34bfbd] transition-colors duration-200 font-medium"
               >
                 {item.label}
               </a>
             ))}
 
             <button
-              className="px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300"
+              className="px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 text-white font-medium"
               style={{
                 background: BRAND_COLOR,
                 boxShadow: `0 4px 14px 0 rgba(52, 191, 189, 0.25)`
@@ -81,7 +83,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-gray-800"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -95,13 +97,13 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-white/10">
+          <div className="md:hidden pb-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4 mt-4">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-700 hover:text-[#34bfbd] transition-colors duration-200 font-medium"
                   onClick={closeMenu}
                 >
                   {item.label}
@@ -109,7 +111,7 @@ const Header: React.FC = () => {
               ))}
 
               <button
-                className="px-6 py-2 rounded-full w-fit"
+                className="px-6 py-2 rounded-full w-fit text-white font-medium"
                 style={{ background: BRAND_COLOR }}
               >
                 Get Started

@@ -25,7 +25,7 @@ const App: React.FC = () => {
               <Projects />
               <WhyChooseUs />
               <Footer />
-              <FloatingContact />
+              {/* <FloatingContact /> */}
             </>
           }
         />
@@ -36,7 +36,7 @@ const App: React.FC = () => {
               <TeamSectionHeader />
               <TeamSection />
               <Footer />
-              <FloatingContact />
+              {/* <FloatingContact /> */}
             </>
           }
         />

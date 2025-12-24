@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Award, Users, Clock, TrendingUp } from 'lucide-react';
 
+const BRAND_COLOR = '#34bfbd';
+
 const WhyChooseUs: React.FC = () => {
   const [counts, setCounts] = useState({
     projects: 0,
@@ -17,8 +19,8 @@ const WhyChooseUs: React.FC = () => {
   };
 
   useEffect(() => {
-    const duration = 2000; // Animation duration in ms
-    const interval = 50; // Update interval in ms
+    const duration = 2000;
+    const interval = 50;
     const steps = duration / interval;
 
     let step = 0;
@@ -47,19 +49,19 @@ const WhyChooseUs: React.FC = () => {
       icon: Award,
       title: 'Industry Expertise',
       description: 'Deep knowledge across multiple industries and cutting-edge technologies.',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-[#34bfbd] to-cyan-400'
     },
     {
       icon: Users,
       title: 'Dedicated Team',
       description: 'Experienced professionals committed to your project\'s success.',
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-cyan-500 to-[#34bfbd]'
     },
     {
       icon: Clock,
       title: 'Fast Delivery',
       description: 'Agile development process ensuring quick turnaround times.',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-[#34bfbd] to-teal-400'
     }
   ];
 
@@ -69,40 +71,40 @@ const WhyChooseUs: React.FC = () => {
       value: counts.projects,
       suffix: '+',
       label: 'Projects Completed',
-      color: 'text-purple-400'
+      color: 'text-[#34bfbd]'
     },
     {
       icon: Users,
       value: counts.clients,
       suffix: '+',
       label: 'Happy Clients',
-      color: 'text-cyan-400'
+      color: 'text-cyan-500'
     },
     {
       icon: Clock,
       value: counts.years,
       suffix: '+',
       label: 'Years Experience',
-      color: 'text-pink-400'
+      color: 'text-teal-500'
     },
     {
       icon: TrendingUp,
       value: counts.growth,
       suffix: '%',
       label: 'Growth Rate',
-      color: 'text-blue-400'
+      color: 'text-[#34bfbd]'
     }
   ];
 
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 relative bg-white">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Why Choose <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">TECH REACH</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+            Why Choose <span className="bg-gradient-to-r from-[#34bfbd] to-cyan-400 bg-clip-text text-transparent">Noorify</span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             We combine technical excellence with business understanding to deliver exceptional results
           </p>
         </div>
@@ -110,7 +112,6 @@ const WhyChooseUs: React.FC = () => {
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => {
-            const IconComponent = feature.icon;
             return (
               <div
                 key={feature.title}
@@ -119,13 +120,11 @@ const WhyChooseUs: React.FC = () => {
                   animationDelay: `${index * 200}ms`
                 }}
               >
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -134,19 +133,17 @@ const WhyChooseUs: React.FC = () => {
         </div>
 
         {/* Statistics */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12">
+        <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-lg">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
               return (
                 <div key={stat.label} className="text-center">
                   <div className="flex items-center justify-center mb-4">
-                    <IconComponent className={`w-8 h-8 ${stat.color}`} />
                   </div>
                   <div className={`text-3xl md:text-4xl font-bold ${stat.color} mb-2`}>
                     {stat.value}{stat.suffix}
                   </div>
-                  <div className="text-gray-400 text-sm">
+                  <div className="text-gray-500 text-sm">
                     {stat.label}
                   </div>
                 </div>
@@ -155,13 +152,13 @@ const WhyChooseUs: React.FC = () => {
           </div>
         </div>
 
+        {/* Optional: Trusted Companies Section */}
         {/* <div className="mt-16 text-center">
-          <p className="text-gray-400 mb-8">Trusted by leading companies worldwide</p>
+          <p className="text-gray-500 mb-8">Trusted by leading companies worldwide</p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-50 hover:opacity-100 transition-opacity duration-300">
-           
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="w-24 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                <div className="text-white/50 text-sm font-medium">Logo {i}</div>
+              <div key={i} className="w-24 h-12 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
+                <div className="text-gray-400 text-sm font-medium">Logo {i}</div>
               </div>
             ))}
           </div>
