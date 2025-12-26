@@ -401,29 +401,20 @@ const Projects: React.FC = () => {
             {featuredProjects.slice(0, 2).map((project, index) => (
               <div
                 key={project.id}
-                className="group relative bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#34bfbd]/30 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl"
-                style={{
-                  animationDelay: `${index * 200}ms`,
-                  boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 20px 60px 0 rgba(52, 191, 189, 0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 12px 0 rgba(0, 0, 0, 0.05)';
-                }}
+                className="group relative bg-white border border-gray-200 rounded-3xl overflow-hidden transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl"
+
               >
                 {/* Project Image */}
                 <div className="relative h-64 md:h-80 overflow-hidden">
                   <BlurToSharpImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full  transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
 
                   {/* Overlay Actions */}
-                  <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 right-4 flex space-x-2 opacity-0  transition-opacity duration-300">
                     <a
                       href={project.liveUrl}
                       className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
@@ -434,7 +425,7 @@ const Projects: React.FC = () => {
 
                 {/* Project Content */}
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#34bfbd] transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4  transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -472,29 +463,20 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#34bfbd]/30 transition-all duration-300 hover:transform hover:scale-105"
-              style={{
-                animationDelay: `${index * 100}ms`,
-                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.05)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 10px 40px 0 rgba(52, 191, 189, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 2px 8px 0 rgba(0, 0, 0, 0.05)';
-              }}
+              className="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105"
+
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
                 <ProgressiveImage
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover  transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"></div>
 
                 {/* Overlay Actions */}
-                <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-3 right-3 flex space-x-2 opacity-0  transition-opacity duration-300">
                   <a
                     href={project.liveUrl}
                     className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
@@ -505,7 +487,7 @@ const Projects: React.FC = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#34bfbd] transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3  transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
