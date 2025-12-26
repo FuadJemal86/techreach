@@ -9,6 +9,8 @@ import {
   Instagram
 } from 'lucide-react';
 
+import logo from '../../public/Images/noorifyLogo.png'
+
 const BRAND_COLOR = '#34bfbd';
 
 const Footer: React.FC = () => {
@@ -43,7 +45,7 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <img
-              src="../../public/Images/noorifyLogo.png"
+              src={logo}
               alt="Noorify Logo"
               className="h-40 w-40 object-contain mb-4"
             />
