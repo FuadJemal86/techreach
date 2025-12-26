@@ -101,8 +101,7 @@ const WhyChooseUs: React.FC = () => {
             return (
               <div
                 key={feature.title}
-                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4"
-                style={{ borderTopColor: BRAND_COLOR }}
+                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {feature.title}
