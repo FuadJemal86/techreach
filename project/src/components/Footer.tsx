@@ -8,7 +8,6 @@ import {
   Linkedin,
   Instagram
 } from 'lucide-react';
-import logo from '../../public/Images/noorifyLogo.png'
 
 const BRAND_COLOR = '#34bfbd';
 
@@ -43,20 +42,17 @@ const Footer: React.FC = () => {
 
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="text-left">
-              <img
-                src={logo}
-                alt="Noorify Logo"
-                className=" h-40 w-40 md:h-56 md:w-56 object-contain"
-              />
-            </div>
+            <img
+              src="../../public/Images/noorifyLogo.png"
+              alt="Noorify Logo"
+              className="h-40 w-40 object-contain mb-4"
+            />
             <p className="text-gray-400 mb-6 text-sm">
               Transforming ideas into powerful digital solutions with innovation and quality.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
-
               <div className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-4 h-4" style={{ color: BRAND_COLOR }} />
                 <span>officialtechreach@gmail.com</span>
