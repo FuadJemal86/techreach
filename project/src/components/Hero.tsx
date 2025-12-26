@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      <div className="absolute inset-0 z-0 opacity-30">
         <img
           src="https://seositecheckup.com/images/BackgroundEndlessConstellation.svg"
           alt=""
