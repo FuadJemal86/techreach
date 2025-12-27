@@ -1,5 +1,5 @@
 import React from 'react';
-import animate from '../../public/Images/animate.png'
+import animate from '../../public/Images/animate2.png'
 
 const BRAND_COLOR = '#34bfbd';
 
