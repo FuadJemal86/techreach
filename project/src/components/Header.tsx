@@ -91,6 +91,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden fixed left-0 right-0 top-14 h-screen bg-white/95 backdrop-blur-lg pb-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4 mt-4 px-4">
@@ -106,7 +107,7 @@ const Header: React.FC = () => {
               ))}
 
               <button
-                className="px-6 py-2 rounded-full w-fit text-white font-medium"
+                className="px-6 py-3 rounded-full w-full text-white font-medium"
                 style={{ background: BRAND_COLOR }}
               >
                 Get Started
@@ -114,6 +115,7 @@ const Header: React.FC = () => {
             </nav>
           </div>
         )}
+
       </div>
     </header>
   );
