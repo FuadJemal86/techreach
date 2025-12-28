@@ -247,6 +247,92 @@ const Projects: React.FC = () => {
       githubUrl: '#',
       featured: false
     }
+    // new project's
+    ,
+    {
+      id: 11,
+      title: 'Hikma ismaic university',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 12,
+      title: 'Mobile care center',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 13,
+      title: 'Usify',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 14,
+      title: 'Yahhad',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 15,
+      title: 'Telegram Library Bot',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 16,
+      title: 'Gorentz',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 17,
+      title: 'Binery',
+      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
+      image: Jejan1,
+      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    }
   ];
 
   const featuredProjects = projects.filter(project => project.featured);
