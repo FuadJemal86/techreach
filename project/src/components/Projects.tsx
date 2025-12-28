@@ -115,6 +115,94 @@ const Jejan3 = '/Images/jejan/jejan3.jpg';
 const Jejan4 = '/Images/jejan/jejan4.jpg';
 const Jejan5 = '/Images/jejan/jejan5.jpg';
 
+// binary
+const binery1 = '/Images/binery/1.png';
+const binery2 = '/Images/binery/2.png';
+
+// gorentz
+
+const gorentz1 = '/Images/gorentz/1.png';
+const gorentz2 = '/Images/gorentz/2.png';
+const gorentz3 = '/Images/gorentz/3.png';
+const gorentz4 = '/Images/gorentz/4.png';
+const gorentz5 = '/Images/gorentz/5.png';
+const gorentz6 = '/Images/gorentz/6.png';
+const gorentz7 = '/Images/gorentz/7.png';
+const gorentz8 = '/Images/gorentz/8.png';
+const gorentz9 = '/Images/gorentz/9.png';
+
+// hikma university
+const hikma1 = '/Images/hikmaUv/hikma1.png';
+const hikma2 = '/Images/hikmaUv/hikma2.png';
+const hikma3 = '/Images/hikmaUv/hikma3.png';
+const hikma4 = '/Images/hikmaUv/hikma4.png';
+const hikma5 = '/Images/hikmaUv/hikma5.png';
+const hikma6 = '/Images/hikmaUv/hikma5.png';
+
+// homeglitz
+const homeglitz1 = '/Images/homeglitz/homeglitz.png';
+const homeglitz2 = '/Images/homeglitz/homeglitz1.png';
+const homeglitz3 = '/Images/homeglitz/homeglitz2.png';
+const homeglitz4 = '/Images/homeglitz/homeglitz3.png';
+
+// mobilecarecenter
+const mobilecarecenter1 = '/Images/mobilecarecenter/1.png';
+const mobilecarecenter2 = '/Images/mobilecarecenter/2.png';
+const mobilecarecenter3 = '/Images/mobilecarecenter/3.png';
+const mobilecarecenter4 = '/Images/mobilecarecenter/4.png';
+const mobilecarecenter5 = '/Images/mobilecarecenter/5.png';
+const mobilecarecenter6 = '/Images/mobilecarecenter/6.png';
+
+// usifi
+const usifi1 = '/Images/Usifi/1.png';
+const usifi2 = '/Images/Usifi/2.png';
+const usifi3 = '/Images/Usifi/3.png';
+const usifi4 = '/Images/Usifi/4.png';
+const usifi5 = '/Images/Usifi/5.png';
+const usifi6 = '/Images/Usifi/6.png';
+const usifi7 = '/Images/Usifi/7.png';
+const usifi8 = '/Images/Usifi/8.png';
+const usifi9 = '/Images/Usifi/9.png';
+
+// Yahhad
+const Yahhad1 = '/Images/Yahhad/1.png';
+const Yahhad2 = '/Images/Yahhad/2.png';
+const Yahhad3 = '/Images/Yahhad/3.png';
+const Yahhad4 = '/Images/Yahhad/4.png';
+const Yahhad5 = '/Images/Yahhad/5.png';
+const Yahhad6 = '/Images/Yahhad/6.png';
+const Yahhad7 = '/Images/Yahhad/7.png';
+const Yahhad8 = '/Images/Yahhad/8.png';
+
+// mishkat
+const mishkat1 = '/Images/mishkat/mishkat1.png';
+const mishkat2 = '/Images/mishkat/mishkat2.png';
+const mishkat3 = '/Images/mishkat/mishkat3.png';
+const mishkat4 = '/Images/mishkat/mishkat4.png';
+const mishkat5 = '/Images/mishkat/mishkat5.png';
+const mishkat6 = '/Images/mishkat/mishkat6.png';
+
+// Auqa
+const aqua1 = '/Images/Aqua/aqua1.png';
+const aqua2 = '/Images/Aqua/aqua2.png';
+const aqua3 = '/Images/Aqua/aqua3.png';
+const aqua4 = '/Images/Aqua/aqua4.png';
+const aqua5 = '/Images/Aqua/aqua5.png';
+const aqua6 = '/Images/Aqua/aqua6.png';
+const aqua7 = '/Images/Aqua/aqua7.png';
+const aqua8 = '/Images/Aqua/aqua8.png';
+const aqua9 = '/Images/Aqua/aqua9.png';
+const aqua10 = '/Images/Aqua/aqua10.png';
+const aqua11 = '/Images/Aqua/aqua11.png';
+const aqua12 = '/Images/Aqua/aqua12.png';
+const aqua13 = '/Images/Aqua/aqua13.png';
+const aqua14 = '/Images/Aqua/aqua14.png';
+const aqua15 = '/Images/Aqua/aqua15.png';
+
+
+
+
+
 interface Project {
   id: number;
   title: string;
@@ -252,11 +340,11 @@ const Projects: React.FC = () => {
     {
       id: 11,
       title: 'Hikma ismaic university',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'A dynamic website for Hikma Islamic University showcasing the university’s profile, programs, and future donation features.',
+      image: hikma1,
+      images: [hikma1, hikma2, hikma3, hikma4, hikma5, hikma6],
       category: 'Web Development',
-      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      technologies: ['Next.js', 'postgres', 'tailwind'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false
@@ -264,9 +352,9 @@ const Projects: React.FC = () => {
     {
       id: 12,
       title: 'Mobile care center',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'We built a dynamic website for a mobile repair center that showcases the services they provide, the types of phones they support, and allows customers to place repair orders and track the status of their phones.',
+      image: mobilecarecenter1,
+      images: [mobilecarecenter1, mobilecarecenter2, mobilecarecenter3, mobilecarecenter5, mobilecarecenter4, mobilecarecenter6],
       category: 'Web Development',
       technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
       liveUrl: '#',
@@ -276,11 +364,11 @@ const Projects: React.FC = () => {
     {
       id: 13,
       title: 'Usify',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'We built a modern website for Usify, an AI-focused company, to present their services, showcase their AI-related projects, and clearly communicate their mission and expertise.',
+      image: usifi1,
+      images: [usifi1, usifi2, usifi3, usifi4, usifi5, usifi6, usifi7, usifi8, usifi9],
       category: 'Web Development',
-      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      technologies: ['React', 'Redis'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false
@@ -288,11 +376,11 @@ const Projects: React.FC = () => {
     {
       id: 14,
       title: 'Yahhad',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'We built Yahhad as an informational platform aimed at promoting peace between Palestine and Israel by presenting real, verified events and encouraging meaningful participation and awareness.',
+      image: Yahhad1,
+      images: [Yahhad1, Yahhad2, Yahhad3, Yahhad4, Yahhad5],
       category: 'Web Development',
-      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      technologies: ['Next.js', 'Redis'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false
@@ -300,9 +388,9 @@ const Projects: React.FC = () => {
     {
       id: 15,
       title: 'Telegram Library Bot',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'Mishkat is a Telegram-based library bot designed to organize academic materials by year, semester, and department, allowing students to easily access their learning resources. It also includes a web-based dashboard for managing and uploading new materials.',
+      image: mishkat1,
+      images: [mishkat1, mishkat2, mishkat3, mishkat4, mishkat5, mishkat6],
       category: 'Web Development',
       technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
       liveUrl: '#',
@@ -312,11 +400,11 @@ const Projects: React.FC = () => {
     {
       id: 16,
       title: 'Gorentz',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'Gorentz is a car rental management platform that allows customers to book their desired vehicles online, while administrators can manage orders, monitor vehicle availability, and track the overall condition and health of all cars.',
+      image: gorentz1,
+      images: [gorentz1, gorentz2, gorentz3, gorentz4, gorentz5, gorentz6, gorentz7, gorentz8, gorentz9],
       category: 'Web Development',
-      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      technologies: ['Node.js', 'Express', 'Prisma', 'WebSocket'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false
@@ -324,9 +412,33 @@ const Projects: React.FC = () => {
     {
       id: 17,
       title: 'Binery',
-      description: 'An e-commerce platform that connects customers and suppliers, facilitating seamless online transactions and product exchanges.',
-      image: Jejan1,
-      images: [Jejan1, Jejan2, Jejan3, Jejan4, Jejan5],
+      description: 'Binery is an online cryptocurrency platform that allows users to securely buy and sell digital assets through a simple and user-friendly interface.',
+      image: binery1,
+      images: [binery1, binery2],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 18,
+      title: 'HomeGlitz',
+      description: 'HomeGlitz is a cleaning service platform where customers place orders by providing all necessary details, and cleaners complete services based on those requirements. The system also supports order management, payments, and status updates via SMS and email.',
+      image: homeglitz1,
+      images: [homeglitz1, homeglitz2, homeglitz3, homeglitz4],
+      category: 'Web Development',
+      technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: false
+    },
+    {
+      id: 19,
+      title: 'Aqua',
+      description: 'Aqua is a comprehensive ERP system designed to manage inventory, products, sales, purchases, and credit control. It includes overdue tracking, low-stock alerts, and automated notifications to ensure full operational control.',
+      image: aqua1,
+      images: [aqua1, aqua10, aqua11, aqua13, aqua12, aqua14, aqua15, aqua2, aqua3, aqua4],
       category: 'Web Development',
       technologies: ['Next.js', 'GraphQL', 'Redis', 'WebSocket'],
       liveUrl: '#',

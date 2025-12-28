@@ -11,7 +11,7 @@ const WhyChooseUs: React.FC = () => {
   });
 
   const finalCounts = {
-    projects: 23,
+    projects: 25,
     clients: 12,
     years: 5,
     growth: 73
