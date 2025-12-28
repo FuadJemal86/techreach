@@ -71,11 +71,7 @@ const Header: React.FC = () => {
             ))}
 
             <button
-              className="px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 text-white font-medium"
-              style={{
-                background: BRAND_COLOR,
-                boxShadow: `0 4px 14px 0 rgba(52, 191, 189, 0.25)`
-              }}
+              className="px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 text-white font-medium bg-[#03966d]"
             >
               Get Started
             </button>
