@@ -1,5 +1,5 @@
 import React from 'react';
-import animate from '../../public/Images/animate.svg'
+import animate from '../../public/Images/animate1.svg'
 
 const BRAND_COLOR = '#34bfbd';
 
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
           {/* Left Side - Text Content */}
           <div className="text-left">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-              Welcome to <span className="bg-gradient-to-r text-[#03966d] bg-clip-text">Noorify</span>
+              Welcome to <span className="bg-gradient-to-r text-[#1eb290] bg-clip-text">Noorify</span>
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
 
             {/* CTA Button */}
             <button
-              className="px-8 py-3 rounded-lg font-semibold text-white transition-all hover:shadow-lg bg-[#03966d]"
+              className="px-8 py-3 rounded-lg font-semibold text-white transition-all hover:shadow-lg bg-[#1eb290]"
 
             >
               Get Started
