@@ -11,7 +11,7 @@ import {
 
 import logo from '../../public/Images/noorifyLogo.png'
 
-const BRAND_COLOR = '#34bfbd';
+const BRAND_COLOR = '#1eb290';
 
 const Footer: React.FC = () => {
   const footerLinks = [

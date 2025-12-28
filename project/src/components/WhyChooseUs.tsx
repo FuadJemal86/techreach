@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const BRAND_COLOR = '#34bfbd';
+const BRAND_COLOR = '#1eb290';
 
 const WhyChooseUs: React.FC = () => {
   const [counts, setCounts] = useState({

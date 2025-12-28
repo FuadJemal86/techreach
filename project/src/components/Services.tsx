@@ -20,25 +20,25 @@ const Services: React.FC = () => {
       icon: Globe,
       title: 'Web Development',
       description: 'Custom websites and web applications built with modern technologies and best practices.',
-      color: 'from-[#34bfbd] to-cyan-400'
+      color: 'bg-[#1eb290] '
     },
     {
       icon: Boxes,
       title: 'Industrial Systems (ERP)',
       description: 'We build powerful ERP solutions to manage inventory, finance, HR, and operations for growing industries.',
-      color: 'from-[#34bfbd] to-teal-400'
+      color: 'bg-[#1eb290]'
     },
     {
       icon: Brush,
       title: 'Branding',
       description: 'We craft powerful brand identities, helping businesses stand out with strategic design and messaging.',
-      color: 'from-[#34bfbd] to-cyan-500'
+      color: 'bg-[#1eb290]'
     },
     {
       icon: BarChart3,
       title: 'Analytics & Insights',
       description: 'Data analytics, reporting, and business intelligence solutions.',
-      color: 'from-cyan-500 to-[#34bfbd]'
+      color: 'bg-[#1eb290]'
     }
   ];
 
@@ -48,7 +48,7 @@ const Services: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
-            Our <span className="bg-gradient-to-r from-[#34bfbd] to-cyan-400 bg-clip-text text-transparent">Services</span>
+            Our <span className="bg-gradient-to-r text-[#1eb290]">Services</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Comprehensive digital solutions to transform your business and accelerate growth

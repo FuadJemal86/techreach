@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const BRAND_COLOR = '#34bfbd';
+const BRAND_COLOR = '#1eb290';
 
 // Progressive Image Component
 interface ProgressiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
