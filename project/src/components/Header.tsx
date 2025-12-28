@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../../public/Images/noorifyLogo.png'
 
 
 // Types
@@ -45,14 +44,14 @@ const Header: React.FC = () => {
 
   // Render
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14 md:h-20">
 
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src={logo}
+              src="/Images/noorifyLogo.png"
               alt="Noorify Logo"
               className=" h-40 w-40 md:h-56 md:w-56 object-contain"
             />
@@ -93,8 +92,8 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-200">
-            <nav className="flex flex-col space-y-4 mt-4">
+          <div className="md:hidden fixed left-0 right-0 top-14 h-screen bg-white/95 backdrop-blur-lg pb-4 border-t border-gray-200">
+            <nav className="flex flex-col space-y-4 mt-4 px-4">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.label}
